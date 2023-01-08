@@ -55,8 +55,13 @@ const Search = () => {
   const dispatch = useDispatch();
   const [locationStart, setLocationStart] = useState([]);
   const [locationEnd, setLocationEnd] = useState([]);
+  const [isShownResults, setIsShownResults] = useState(false);
+  const [isShownSearch, setIsShownSearch] = useState(true);
+
   const onFormSubmit = (event) => {
     event.preventDefault()
+    setIsShownResults(true)
+    setIsShownSearch(false)
     // fetch(`${BASE_
     // FORECAST_URL}q=${locationStart}&units=metric&APPID=ad0eb5f0c488721a69e3cb4d4cef6ea9`)
     fetch(
@@ -69,6 +74,7 @@ const Search = () => {
             console.log(data);
             dispatch(search.actions.setStartCityName(data.name));
             dispatch(search.actions.setStartTemp(data.main.temp));
+            dispatch(search.actions.setStartFeelsTemp(data.main.feels_like));
             dispatch(
               search.actions.setStartDescription(
                 data.weather[0].description
@@ -79,6 +85,7 @@ const Search = () => {
           batch(() => {
             dispatch(search.actions.setStartCityName(null));
             dispatch(search.actions.setStartTemp(null));
+            dispatch(search.actions.setStartFeelsTemp(null));
             dispatch(search.actions.setStartDescription(null));
           });
         }
@@ -93,6 +100,7 @@ const Search = () => {
             console.log(data);
             dispatch(search.actions.setEndCityName(data.name));
             dispatch(search.actions.setEndTemp(data.main.temp));
+            dispatch(search.actions.setEndFeelsTemp(data.main.feels_like));
             dispatch(
               search.actions.setEndDescription(
                 data.weather[0].description
@@ -110,47 +118,49 @@ const Search = () => {
   };
   return (
     <>
-      <SearchForm onSubmit={onFormSubmit}>
-        <Selections>
-          <Container>
-            <CityInputs>Start:</CityInputs>
-            <Select
-              id="locationStartInput"
-              value={locationStart}
-              onChange={(e) => setLocationStart(e.target.value)}>
-              <option disabled value="">
-                Location:
-              </option>
-              <option value="Zurich">Zurich</option>
-              <option value="Basel">Basel</option>
-              <option value="Geneva">Geneva</option>
-              <option value="Bern">Bern</option>
-              <option value="Luzern">Luzern</option>
-              <option value="Lugano">Lugano</option>
-            </Select>
-          </Container>
+      {isShownSearch && (
+        <SearchForm onSubmit={onFormSubmit}>
+          <Selections>
+            <Container>
+              <CityInputs>Start:</CityInputs>
+              <Select
+                id="locationStartInput"
+                value={locationStart}
+                onChange={(e) => setLocationStart(e.target.value)}>
+                <option disabled value="">
+                  Location:
+                </option>
+                <option value="Zurich">Zurich</option>
+                <option value="Basel">Basel</option>
+                <option value="Geneva">Geneva</option>
+                <option value="Bern">Bern</option>
+                <option value="Luzern">Luzern</option>
+                <option value="Lugano">Lugano</option>
+              </Select>
+            </Container>
 
-          <Container>
-            <CityInputs>Destination:</CityInputs>
-            <Select
-              id="locationEndInput"
-              value={locationEnd}
-              onChange={(e) => setLocationEnd(e.target.value)}>
-              <option disabled value="">
-                Location:
-              </option>
-              <option value="manchester">manchester</option>
-              <option value="leeds">leeds</option>
-              <option value="hull">hull</option>
-              <option value="london">london</option>
-              <option value="bradford">bradford</option>
-              <option value="birmingham">birmingham</option>
-            </Select>
-          </Container>
-        </Selections>
-        <Button type="submit">Submit</Button>
-      </SearchForm>
-      <Results />
+            <Container>
+              <CityInputs>Destination:</CityInputs>
+              <Select
+                id="locationEndInput"
+                value={locationEnd}
+                onChange={(e) => setLocationEnd(e.target.value)}>
+                <option disabled value="">
+                  Location:
+                </option>
+                <option value="manchester">manchester</option>
+                <option value="leeds">leeds</option>
+                <option value="hull">hull</option>
+                <option value="london">london</option>
+                <option value="bradford">bradford</option>
+                <option value="birmingham">birmingham</option>
+              </Select>
+            </Container>
+          </Selections>
+          <Button type="submit">Submit</Button>
+        </SearchForm>
+      )}
+      {isShownResults && <Results />}
     </>
   );
 };

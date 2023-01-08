@@ -5,9 +5,11 @@ const search = createSlice({
   initialState: {
     startCityName: '',
     startTemp: '',
+    startFeelsTemp: '',
     startDescription: '',
     endCityName: '',
     endTemp: '',
+    endFeelsTemp: '',
     endDescription: ''
   },
   reducers: {
@@ -16,6 +18,9 @@ const search = createSlice({
     },
     setStartTemp: (store, action) => {
       store.startTemp = action.payload;
+    },
+    setStartFeelsTemp: (store, action) => {
+      store.startFeelsTemp = action.payload;
     },
     setStartDescription: (store, action) => {
       store.startDescription = action.payload;
@@ -26,8 +31,11 @@ const search = createSlice({
     setEndTemp: (store, action) => {
       store.endTemp = action.payload;
     },
+    setEndFeelsTemp: (store, action) => {
+      store.endFeelsTemp = action.payload;
+    },
     setEndDescription: (store, action) => {
-      store.status = action.payload;
+      store.endDescription = action.payload;
     }
   }
 });
