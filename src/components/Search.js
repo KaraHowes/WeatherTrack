@@ -10,36 +10,27 @@ display: flex;
 flex-direction: column;
 margin: 30px;
 `
-const Container = styled.div`
-display: flex;
-flex-direction: row;
-width: 50%;
-align-items: center;
-@media (min-width:768px) {
-    display:inline-flex;
- }`
 
-const Select = styled.select`
-  border: none;
-  padding: 0;
-  margin: 0;
-  height: 40px;
-  display: block;
-  border-radius: 5px;
-  font-size: 18px;
-  background-color: #d5f5f2;
-  font-weight: 800;
-  text-align: center;`;
+const Select = styled.input`
+border: none;
+width: 80%;
+font-size: 25px;
+margin: 100px 20px;
+&:focus {
+  outline: none;
+}
+&::-webkit-input-placeholder {
+  color: #cfd0d0;
+  font-size: 25px;
+  margin-left: 30px;
+}`
+
 const Selections = styled.div`
-dispaly: flex;
+display: flex;
 flex-direction: row;
 @media (min-width:768px) {
    flex-direction: column;
 }`
-const CityInputs = styled.h1`
-margin: 0;
-padding: 0;
-font-size: 24px;`
 const Button = styled.button`
   width: 50%;
   height: 50px;
@@ -122,41 +113,17 @@ const Search = () => {
       {isShownSearch && (
         <SearchForm onSubmit={onFormSubmit}>
           <Selections>
-            <Container>
-              <CityInputs>Start:</CityInputs>
-              <Select
-                id="locationStartInput"
-                value={locationStart}
-                onChange={(e) => setLocationStart(e.target.value)}>
-                <option disabled value="">
-                  Location:
-                </option>
-                <option value="Zurich">Zurich</option>
-                <option value="Basel">Basel</option>
-                <option value="Geneva">Geneva</option>
-                <option value="Bern">Bern</option>
-                <option value="Luzern">Luzern</option>
-                <option value="Lugano">Lugano</option>
-              </Select>
-            </Container>
+            <Select
+              type="text"
+              placeholder="Starting Point"
+              value={locationStart}
+              onChange={(e) => setLocationStart(e.target.value)} />
 
-            <Container>
-              <CityInputs>Destination:</CityInputs>
-              <Select
-                id="locationEndInput"
-                value={locationEnd}
-                onChange={(e) => setLocationEnd(e.target.value)}>
-                <option disabled value="">
-                  Location:
-                </option>
-                <option value="manchester">manchester</option>
-                <option value="leeds">leeds</option>
-                <option value="hull">hull</option>
-                <option value="london">london</option>
-                <option value="bradford">bradford</option>
-                <option value="birmingham">birmingham</option>
-              </Select>
-            </Container>
+            <Select
+              type="text"
+              placeholder="Destination"
+              value={locationEnd}
+              onChange={(e) => setLocationEnd(e.target.value)} />
           </Selections>
           <Button type="submit">Submit</Button>
         </SearchForm>
