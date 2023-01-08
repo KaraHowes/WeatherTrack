@@ -4,6 +4,7 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import styled from 'styled-components';
 
 import Search from './components/Search';
+import Homescreen from './components/Homescreen'
 
 import search from './reducers/search';
 
@@ -22,6 +23,7 @@ export const App = () => {
   return (
     <Provider store={store}>
       <Main>
+        <Homescreen />
         <Search />
       </Main>
     </Provider>

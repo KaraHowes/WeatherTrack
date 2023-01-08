@@ -1,19 +1,20 @@
-# Technigo React Starter App
+This is a weather-tracker App produced by Kara Howes, based on a react starter app by Technigo (for quick set-up).
 
-This app has been generated using `create-react-app`, then cleaned up a little so we have a project with just the elements we need to get started.
+The aim is to produce a weather app aimed at hikers/bikers/the adventurous types. It can tell you the weather of your starting point and your destination, so there should be no unpeasant surprised and you can dress/prepare accordingly.
 
-Add components in the `src` folder and use them in `src/app.js` to get started.
+I used the open-source openweathermap api (on their free plan) to access limited data. 
+I have used Redux as a global state to store the information accessed from the api.
 
-## Usage
+MVP:
+* Input starting and destination cities/ to receive weather locally now.
+* Want to mount a results component with the city name, actual temperature, feels like temperature and a description.
+* Use Redux to store the Global state.
+* Should look appealing.
 
-1. On GitHub, click the 'use this template' button to create a new repo on your account
-1. Clone the new repo to your computer
-1. Install required dependencies with npm: `npm install`
-1. Start the project: `npm start`
+Stretch goals.
+* Have type input instead of select
+* Use Moment to show the current time
+* render differently depending on city conditions
+* would like to be able to add approx time for the forecast
 
-Alternatively, if you don't want a new git repo on your account;
 
-1. Download & extract the [latest release](https://github.com/Technigo/react-starter/releases/latest) from GitHub
-1. Open the directory in the terminal: `cd /path/to/react-starter`
-1. Install required dependencies with npm: `npm install`
-1. Start the project: `npm start`
