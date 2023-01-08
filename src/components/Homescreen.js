@@ -5,15 +5,16 @@ import moment from 'moment';
 const DateContainer = styled.section`
   display: flex;
   flex-direction: column;
-  text-align: right;
-  margin: 10px 10px 0 0;
+  text-align: center;
+  margin: 20px 0;
   font-weight: bold;
 `;
 const Date = styled.h2`
-  font-size: 12px;
-  font-weight: bold;
+  font-size: 30px;
+  font-weight: 800;
   margin: 0;
-  color: black;
+  color: white;
+  font-family: 'Poppins', sans-serif;
 `;
 
 const Homescreen = () => {

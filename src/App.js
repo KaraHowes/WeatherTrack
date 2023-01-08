@@ -1,10 +1,10 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { createStore, combineReducers } from '@reduxjs/toolkit';
 import styled from 'styled-components';
 
 import Search from './components/Search';
-import Homescreen from './components/Homescreen'
+import Header from './components/Header'
 
 import search from './reducers/search';
 
@@ -14,16 +14,26 @@ const reducer = combineReducers({
 
 const Main = styled.div`
 width: 100%;
-background-color: pink;
-height: 100vh;`
+height: 100vh;
+;`
 
-const store = configureStore({ reducer });
+// this is necessary for local storage usage
+const persistedStatesJSON = localStorage.getItem('weatherReduxState');
+let persistedState = {};
+if (persistedStatesJSON) {
+  persistedState = JSON.parse(persistedStatesJSON);
+}
+const store = createStore(reducer, persistedState);
+
+store.subscribe(() => {
+  localStorage.setItem('weatherReduxState', JSON.stringify(store.getState()));
+});
 
 export const App = () => {
   return (
     <Provider store={store}>
       <Main>
-        <Homescreen />
+        <Header />
         <Search />
       </Main>
     </Provider>

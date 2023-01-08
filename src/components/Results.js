@@ -1,6 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-// import search from '../reducers/search'
+
+import styled from 'styled-components';
+
+const Temp = styled.h1`
+font-family: 'Poppins', sans-serif;
+font-size: 30px;
+font-weight: 600;`
 
 const Results = () => {
   const startCity = useSelector((store) => store.search.startCityName);
@@ -19,16 +25,15 @@ const Results = () => {
   return (
     <>
       <div> Starter city: {startCity} </div>
-      <div> temperature: {numberStartTemp} </div>
+      <Temp> temperature: {numberStartTemp} </Temp>
       <div> Feels-like: {numberStartFeelsTemp} </div>
       <div> description: {startDesc} </div>
 
       <div> Destination city: {endCity} </div>
-      <div> temperature: {numberEndTemp} </div>
+      <Temp> temperature: {numberEndTemp} </Temp>
       <div> Feels-like: {numberEndFeelsTemp} </div>
       <div> description: {endDesc} </div>
     </>
   );
 };
 export default Results;
-// {detailsEnd.weather[0].description}, {detailsStart.weather[0].description}

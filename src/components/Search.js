@@ -8,6 +8,7 @@ import search from '../reducers/search'
 const SearchForm = styled.form`
 display: flex;
 flex-direction: column;
+margin: 30px;
 `
 const Container = styled.div`
 display: flex;
@@ -165,4 +166,3 @@ const Search = () => {
   );
 };
 export default Search;
-// {detailsEnd.weather[0].description}, {detailsStart.weather[0].description}
