@@ -1,12 +1,52 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-
+import moment from 'moment';
 import styled from 'styled-components';
 
+import StartIcon from './StartIcon'
+import EndIcon from './EndIcon'
+
+const Container = styled.section`
+margin: 20px auto;
+justify-content: center;
+`
+const Day = styled.h1`
+  font-size: 50px;
+  font-weight: 800;
+  margin: 10px;
+  text-align: center;`
+
+const Table = styled.div`
+display: flex;
+flex-direction: row;
+width: 100%;
+text-align: center;
+margin: 40px 0;`
+
+const City = styled.h2`
+width: 50%;
+font-size: 20px;
+`
 const Temp = styled.h1`
-font-family: 'Poppins', sans-serif;
-font-size: 30px;
-font-weight: 600;`
+font-size: 50px;
+font-weight: 600;
+width: 50%`
+
+const Feels = styled.h3`
+font-size: 20px;
+font-weight: 600;
+width: 50%`
+const Icon = styled.div`
+width: 50px;
+max-size: 50px;`
+const Image = styled.img`
+width: 60px;
+`
+const Button = styled.button`
+border: none;
+background: white;
+margin: 20px auto;
+display: block;`
 
 const Results = () => {
   const startCity = useSelector((store) => store.search.startCityName);
@@ -22,18 +62,37 @@ const Results = () => {
   const numberEndFeelsTemp = Number(endFeelTemp).toFixed(0)// convert the string into a number
   const endDesc = useSelector((store) => store.search.endDescription);
 
-  return (
-    <>
-      <div> Starter city: {startCity} </div>
-      <Temp> temperature: {numberStartTemp} </Temp>
-      <div> Feels-like: {numberStartFeelsTemp} </div>
-      <div> description: {startDesc} </div>
+  const refreshPage = () => {
+    window.location.reload();
+  };
 
-      <div> Destination city: {endCity} </div>
-      <Temp> temperature: {numberEndTemp} </Temp>
-      <div> Feels-like: {numberEndFeelsTemp} </div>
-      <div> description: {endDesc} </div>
-    </>
+  return (
+    <Container>
+      <Day>{moment().format('dddd')}</Day>
+      <Table>
+        <City> {startCity} </City>
+        <City>{endCity} </City>
+      </Table>
+      <Table>
+        <Temp>{numberStartTemp}&deg;C</Temp>
+        <Temp>{numberEndTemp}&deg;C</Temp>
+      </Table>
+      <Table>
+        <Feels>The Feels: {numberStartFeelsTemp}&deg;C</Feels>
+        <Feels>The Feels: {numberEndFeelsTemp}&deg;C</Feels>
+      </Table>
+      <Table>
+        <Icon><StartIcon /></Icon>
+        <Icon><EndIcon /></Icon>
+      </Table>
+      <Table>
+        <City>{startDesc}</City>
+        <City>{endDesc}</City>
+      </Table>
+      <Button type="submit" aria-label="go" onClick={refreshPage}>
+        <Image src="./assets/left.png" />
+      </Button>
+    </Container>
   );
 };
 export default Results;

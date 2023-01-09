@@ -13,14 +13,15 @@ margin: 30px;
 
 const Select = styled.input`
 border: none;
-width: 80%;
+width: 100%;
 font-size: 25px;
-margin: 100px 20px;
+margin: 100px 0;
+text-align: center;
 &:focus {
   outline: none;
 }
 &::-webkit-input-placeholder {
-  color: #cfd0d0;
+  color: #A9A9A9;
   font-size: 25px;
   margin-left: 30px;
 }`
@@ -31,17 +32,13 @@ flex-direction: row;
 @media (min-width:768px) {
    flex-direction: column;
 }`
+
+const Image = styled.img`
+width: 60px;
+`
 const Button = styled.button`
-  width: 50%;
-  height: 50px;
-  background-color: white;
-  cursor: pointer;
-  font-size: 24px;
-  padding: 15px 0;
-  font-family: "Josefin Sans", sans-serif;
-  border: 3px solid black;
-  box-shadow: 8px 8px yellow;
-  margin: 20px;`;
+border: none;
+background: white;`
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -115,7 +112,7 @@ const Search = () => {
           <Selections>
             <Select
               type="text"
-              placeholder="Starting Point"
+              placeholder="Start"
               value={locationStart}
               onChange={(e) => setLocationStart(e.target.value)} />
 
@@ -125,7 +122,7 @@ const Search = () => {
               value={locationEnd}
               onChange={(e) => setLocationEnd(e.target.value)} />
           </Selections>
-          <Button type="submit">Submit</Button>
+          <Button type="submit" aria-label="go"><Image src="./assets/right.png" /></Button>
         </SearchForm>
       )}
       {isShownResults && <Results />}

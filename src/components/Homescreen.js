@@ -9,11 +9,10 @@ const DateContainer = styled.section`
   font-weight: bold;
 `;
 const Date = styled.h2`
-  font-size: 35px;
+  font-size: 50px;
   font-weight: 800;
   margin: 100px;
   color: white;
-  font-family: 'Poppins', sans-serif;
 `;
 
 const Homescreen = () => {

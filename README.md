@@ -17,4 +17,4 @@ Stretch goals.
 * render differently depending on city conditions
 * would like to be able to add approx time for the forecast
 
-
+The "back" button in the results is a bit of a cheat; it merely refreshes the page. If I had more time, I would've structured the project differently so that the local storage would work correctly and one properly return to the search page.
