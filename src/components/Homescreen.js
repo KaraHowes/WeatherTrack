@@ -2,6 +2,16 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import moment from 'moment';
 
+const Homescreen = () => {
+  return (
+    <DateContainer>
+      <Date>{moment().format('HH:mm')}</Date>
+    </DateContainer>
+  );
+};
+export default Homescreen;
+
+// styling
 const DateContainer = styled.section`
   display: flex;
   flex-direction: column;
@@ -14,12 +24,3 @@ const Date = styled.h2`
   margin: 100px;
   color: white;
 `;
-
-const Homescreen = () => {
-  return (
-    <DateContainer>
-      <Date>{moment().format('HH:mm')}</Date>
-    </DateContainer>
-  );
-};
-export default Homescreen;

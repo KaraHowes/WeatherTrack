@@ -12,11 +12,6 @@ const reducer = combineReducers({
   search: search.reducer
 });
 
-const Main = styled.div`
-width: 100%;
-height: 100vh;
-;`
-
 // this is necessary for local storage usage
 const persistedStatesJSON = localStorage.getItem('weatherReduxState');
 let persistedState = {};
@@ -39,3 +34,9 @@ export const App = () => {
     </Provider>
   );
 };
+
+// styling
+const Main = styled.div`
+width: 100%;
+height: 100vh;
+;`

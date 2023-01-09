@@ -1,44 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch, batch } from 'react-redux';
-// import { BASE_FORECAST_URL } from './utils/urls';
+import { START_API_URL, END_API_URL } from '../utils/urls';
 import Results from './Results'
 import search from '../reducers/search'
-
-const SearchForm = styled.form`
-display: flex;
-flex-direction: column;
-margin: 30px;
-`
-
-const Select = styled.input`
-border: none;
-width: 100%;
-font-size: 25px;
-margin: 100px 0;
-text-align: center;
-&:focus {
-  outline: none;
-}
-&::-webkit-input-placeholder {
-  color: #A9A9A9;
-  font-size: 25px;
-  margin-left: 30px;
-}`
-
-const Selections = styled.div`
-display: flex;
-flex-direction: row;
-@media (min-width:768px) {
-   flex-direction: column;
-}`
-
-const Image = styled.img`
-width: 60px;
-`
-const Button = styled.button`
-border: none;
-background: white;`
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -51,10 +16,8 @@ const Search = () => {
     event.preventDefault()
     setIsShownResults(true)
     setIsShownSearch(false)
-    // fetch(`${BASE_
-    // FORECAST_URL}q=${locationStart}&units=metric&APPID=ad0eb5f0c488721a69e3cb4d4cef6ea9`)
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${locationStart}&units=metric&APPID=ad0eb5f0c488721a69e3cb4d4cef6ea9`
+      START_API_URL(locationStart)
     )
       .then((res) => res.json())
       .then((data) => {
@@ -80,7 +43,7 @@ const Search = () => {
         }
       });
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${locationEnd}&units=metric&APPID=ad0eb5f0c488721a69e3cb4d4cef6ea9`
+      END_API_URL(locationEnd)
     )
       .then((res) => res.json())
       .then((data) => {
@@ -130,3 +93,39 @@ const Search = () => {
   );
 };
 export default Search;
+
+// styling
+const SearchForm = styled.form`
+display: flex;
+flex-direction: column;
+margin: 30px;
+`
+
+const Select = styled.input`
+border: none;
+width: 100%;
+font-size: 25px;
+margin: 100px 0;
+text-align: center;
+&:focus {
+  outline: none;
+}
+&::-webkit-input-placeholder {
+  color: #A9A9A9;
+  font-size: 25px;
+  margin-left: 30px;
+}`
+
+const Selections = styled.div`
+display: flex;
+flex-direction: row;
+@media (min-width:768px) {
+   flex-direction: column;
+}`
+
+const Image = styled.img`
+width: 60px;
+`
+const Button = styled.button`
+border: none;
+background: white;`

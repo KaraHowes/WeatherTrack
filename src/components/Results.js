@@ -6,48 +6,6 @@ import styled from 'styled-components';
 import StartIcon from './StartIcon'
 import EndIcon from './EndIcon'
 
-const Container = styled.section`
-margin: 20px auto;
-justify-content: center;
-`
-const Day = styled.h1`
-  font-size: 50px;
-  font-weight: 800;
-  margin: 10px;
-  text-align: center;`
-
-const Table = styled.div`
-display: flex;
-flex-direction: row;
-width: 100%;
-text-align: center;
-margin: 40px 0;`
-
-const City = styled.h2`
-width: 50%;
-font-size: 20px;
-`
-const Temp = styled.h1`
-font-size: 50px;
-font-weight: 600;
-width: 50%`
-
-const Feels = styled.h3`
-font-size: 20px;
-font-weight: 600;
-width: 50%`
-const Icon = styled.div`
-width: 50px;
-max-size: 50px;`
-const Image = styled.img`
-width: 60px;
-`
-const Button = styled.button`
-border: none;
-background: white;
-margin: 20px auto;
-display: block;`
-
 const Results = () => {
   const startCity = useSelector((store) => store.search.startCityName);
   const startTemp = useSelector((store) => store.search.startTemp);
@@ -96,3 +54,42 @@ const Results = () => {
   );
 };
 export default Results;
+
+// styling
+const Container = styled.section`
+margin: 20px auto;
+justify-content: center;
+`
+const Day = styled.h1`
+  font-size: 50px;
+  font-weight: 800;
+  margin: 10px;
+  text-align: center;`
+const Table = styled.div`
+display: flex;
+flex-direction: row;
+width: 100%;
+text-align: center;
+margin: 40px 0;`
+const City = styled.h2`
+width: 50%;
+font-size: 20px;
+`
+const Temp = styled.h1`
+font-size: 50px;
+font-weight: 600;
+width: 50%`
+const Feels = styled.h3`
+font-size: 20px;
+font-weight: 600;
+width: 50%`
+const Icon = styled.div`
+width: 50%`
+const Image = styled.img`
+width: 60px;
+`
+const Button = styled.button`
+border: none;
+background: white;
+margin: 20px auto;
+display: block;`
