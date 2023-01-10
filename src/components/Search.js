@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { useDispatch, batch } from 'react-redux';
+
 import { START_API_URL, END_API_URL } from '../utils/urls';
 import Results from './Results'
 import search from '../reducers/search'
@@ -23,7 +24,6 @@ const Search = () => {
       .then((data) => {
         if (data) {
           batch(() => {
-            console.log(data);
             dispatch(search.actions.setStartCityName(data.name));
             dispatch(search.actions.setStartTemp(data.main.temp));
             dispatch(search.actions.setStartFeelsTemp(data.main.feels_like));
@@ -49,7 +49,6 @@ const Search = () => {
       .then((data) => {
         if (data) {
           batch(() => {
-            console.log(data);
             dispatch(search.actions.setEndCityName(data.name));
             dispatch(search.actions.setEndTemp(data.main.temp));
             dispatch(search.actions.setEndFeelsTemp(data.main.feels_like));

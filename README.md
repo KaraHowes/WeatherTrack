@@ -22,3 +22,5 @@ The "back" button in the results is a bit of a cheat; it merely refreshes the pa
 
 I am quietly pleased with this project.
 Coded from scratch, my own idea. I designed how to approach this project and knew the api calls were key. This took a surprising amount of time. All styling, react and redux were set up and implemented in 2 days. 
+
+The next step is to install React Time picker and try to implement a proper forecast. 

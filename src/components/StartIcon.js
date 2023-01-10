@@ -20,7 +20,9 @@ const StartIcon = () => {
   } else if (startDesc.includes('sun')) {
     return <Icon src="./assets/sun.png" alt="sun" />;
   } else if (startDesc.includes('clear')) {
-    return <Icon src="./assets/sunny.png" alt="sun" />;
+    return <Icon src="./assets/sunny.png" alt="clear" />;
+  } else if (startDesc.includes('drizzle')) {
+    return <Icon src="./assets/light-rain.png" alt="drizzle" />;
   } else { return (<div>No image available</div>) }
 };
 export default StartIcon;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import moment from 'moment';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 import StartIcon from './StartIcon'
 import EndIcon from './EndIcon'
@@ -32,12 +32,12 @@ const Results = () => {
         <City>{endCity} </City>
       </Table>
       <Table>
-        <Temp>{numberStartTemp}&deg;C</Temp>
-        <Temp>{numberEndTemp}&deg;C</Temp>
+        <Temp>{numberStartTemp} &deg;C</Temp>
+        <Temp>{numberEndTemp} &deg;C</Temp>
       </Table>
       <Table>
-        <Feels>The Feels: {numberStartFeelsTemp}&deg;C</Feels>
-        <Feels>The Feels: {numberEndFeelsTemp}&deg;C</Feels>
+        <Feels>The Feels: {numberStartFeelsTemp} &deg;C</Feels>
+        <Feels>The Feels: {numberEndFeelsTemp} &deg;C</Feels>
       </Table>
       <Table>
         <Icon><StartIcon /></Icon>
