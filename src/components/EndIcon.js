@@ -23,6 +23,8 @@ const EndIcon = () => {
     return <Icon src="./assets/sunny.png" alt="clear" />;
   } else if (endDesc.includes('drizzle')) {
     return <Icon src="./assets/light-rain.png" alt="drizzle" />;
+  } else if (endDesc.includes('Overcast')) {
+    return <Icon src="./assets/cloud.png" alt="cloudy" />;
   } else { return (<div>No image available</div>) }
 };
 export default EndIcon;

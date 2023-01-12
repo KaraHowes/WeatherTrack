@@ -3,7 +3,8 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers } from '@reduxjs/toolkit';
 import styled from 'styled-components';
 
-import Search from './components/Search';
+// import Search from './components/Search';
+import UrlTest from './components/UrlTest'
 import Header from './components/Header'
 
 import search from './reducers/search';
@@ -29,7 +30,7 @@ export const App = () => {
     <Provider store={store}>
       <Main>
         <Header />
-        <Search />
+        <UrlTest />
       </Main>
     </Provider>
   );

@@ -23,6 +23,8 @@ const StartIcon = () => {
     return <Icon src="./assets/sunny.png" alt="clear" />;
   } else if (startDesc.includes('drizzle')) {
     return <Icon src="./assets/light-rain.png" alt="drizzle" />;
+  } else if (startDesc.includes('Overcast')) {
+    return <Icon src="./assets/cloud.png" alt="cloudy" />;
   } else { return (<div>No image available</div>) }
 };
 export default StartIcon;
